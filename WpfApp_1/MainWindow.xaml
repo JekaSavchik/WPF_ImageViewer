@@ -17,24 +17,24 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
-                <Menu  Grid.Column="0" Grid.ColumnSpan="3">
+        <Menu  Grid.Column="0" Grid.ColumnSpan="3">
             <MenuItem Header="Файл">
                 <MenuItem Header="Открыть папку" Click="MenuItemOpenFolder_Click"/>
                 <Separator/>
                 <MenuItem Header="Выход" Click="MenuItemExit_Click"/>
             </MenuItem>
         </Menu>
-        <Button Grid.Row="2" Grid.Column="0" Content="" Name="ButtonLeft" Click="ButtonLeft_Click">
+        <Button Grid.Row="2" Grid.Column="0" Content="" Name="ButtonLeft" Click="ButtonLeft_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/navigate-left.png" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="Resources/navigate-left.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <Button Grid.Row="2" Grid.Column="2" Content="" Name="ButtonRight" Click="ButtonRight_Click">
+        <Button Grid.Row="2" Grid.Column="2" Content="" Name="ButtonRight" Click="ButtonRight_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/navigate-right.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <ListBox Grid.Column="1" Grid.Row="2" Name="listBox" SelectionChanged="listBox_SelectionChanged" ItemsSource="{Binding Files}">
+        <ListBox Grid.Column="1" Grid.Row="2" Name="listBox" SelectionChanged="listBox_SelectionChanged" ItemsSource="{Binding Files}" BorderBrush="{x:Null}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
