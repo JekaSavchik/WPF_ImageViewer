@@ -64,5 +64,6 @@ namespace WpfApp_1
             else
                 listBox.SelectedIndex = 0;
         }
+
     }
 }

@@ -20,8 +20,7 @@ namespace WpfApp_1
 
         public void LoadFiles()
         {
-            List<string> filter = new List<string>() { @"bmp", @"jpg", @"gif", @"png", @"tif" };
-            FileAttributes FAt;
+            List<string> filter = new List<string>() { @"bmp", @"jpg", @"gif", @"png", @"tif", @"jpeg" };
             FileInfo fileInfo;
             var dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -30,8 +29,6 @@ namespace WpfApp_1
                 foreach (string file in Directory.GetFiles(dialog.SelectedPath))
                 {
                     fileInfo = new FileInfo(file);
-                    FAt = fileInfo.Attributes;
-                    if ((FAt & FileAttributes.Hidden) != FileAttributes.Hidden)
                         if (filter.Exists(n => n == file.Split(new char[] { '.' }).Last().ToLower()))
                             Files.Add(file);
                 }
