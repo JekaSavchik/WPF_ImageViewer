@@ -1,0 +1,26 @@
+﻿<Window
+    x:Class="WpfApp_1.Win"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp_1"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Win"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBlock
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="BlueViolet" />
+        <Image
+            Name="Img"
+            DataContext="{Binding SelectedPicture}"
+            Source="{Binding _Path, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</Window>

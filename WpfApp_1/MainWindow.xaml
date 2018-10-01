@@ -2,6 +2,7 @@
     x:Class="WpfApp_1.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WpfApp_1"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,6 +10,12 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.Resources>
+        <cm:BackgroundWorker x:Key="backgroundWorker" />
+    </Window.Resources>
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -17,15 +24,26 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="59*" />
+            <ColumnDefinition Width="37*" />
             <ColumnDefinition Width="60" />
         </Grid.ColumnDefinitions>
-        <Menu Grid.Column="0" Grid.ColumnSpan="3">
+        <Menu Grid.Column="0" Grid.ColumnSpan="4">
             <MenuItem Header="Файл">
-                <MenuItem Click="MenuItemOpenFolder_Click" Header="Открыть папку" />
+                <MenuItem Command="{Binding Load_Files}" Header="Открыть папку" />
                 <Separator />
                 <MenuItem Click="MenuItemExit_Click" Header="Выход" />
             </MenuItem>
+            <MenuItem Click="MenuItemNewWin_Click" Header="Во весь экран" />
+            <Separator/>
+            <MenuItem
+                Click="MenuItemSlideShowStart_Click" 
+                Header="Старт Слайдшоу"
+                Background="LightGreen"/>
+            <MenuItem 
+                Click="MenuItemSlideShowStop_Click"
+                Header="Стоп Слайдшоу" 
+                Background="LightCoral"/>
         </Menu>
         <Button
             Name="ButtonLeft"
@@ -35,27 +53,32 @@
             Click="ButtonLeft_Click"
             Content="">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/navigate-left.png" Stretch="UniformToFill" />
+                <ImageBrush
+                    ImageSource="Resources/navigate-left.png" 
+                    Stretch="UniformToFill" />
             </Button.Background>
         </Button>
         <Button
             Name="ButtonRight"
             Grid.Row="2"
-            Grid.Column="2"
+            Grid.Column="3"
             BorderBrush="{x:Null}"
             Click="ButtonRight_Click"
             Content="">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/navigate-right.png" Stretch="UniformToFill" />
+                <ImageBrush
+                    ImageSource="Resources/navigate-right.png"
+                    Stretch="UniformToFill" />
             </Button.Background>
         </Button>
         <ListBox
             Name="listBox"
             Grid.Row="2"
             Grid.Column="1"
+            Grid.ColumnSpan="2"
             BorderBrush="{x:Null}"
             ItemsSource="{Binding Files}"
-            SelectionChanged="listBox_SelectionChanged">
+            SelectedItem="{Binding SelectedPicture}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
@@ -65,15 +88,16 @@
                 <DataTemplate>
                     <Image
                         Width="80"
-                        Height="80"
-                        Source="{Binding}" />
+                        MaxHeight="80"
+                        Source="{Binding Path=_Path}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
         <Image
-            Name="BigImage"
             Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="3" />
+            Grid.ColumnSpan="4"
+            DataContext="{Binding SelectedPicture}"
+            Source="{Binding _Path, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
