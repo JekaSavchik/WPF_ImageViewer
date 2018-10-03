@@ -6,16 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WpfApp_1"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="ImageViwerWindow"
     Title="MainWindow"
     Width="800"
     Height="450"
+    Style="{DynamicResource DarkStyle}"
     mc:Ignorable="d">
-    <Window.Resources>
-        <cm:BackgroundWorker x:Key="backgroundWorker" />
-    </Window.Resources>
     <Window.DataContext>
         <local:ViewModel />
     </Window.DataContext>
+    <Window.Resources />
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -28,22 +28,49 @@
             <ColumnDefinition Width="37*" />
             <ColumnDefinition Width="60" />
         </Grid.ColumnDefinitions>
-        <Menu Grid.Column="0" Grid.ColumnSpan="4">
-            <MenuItem Header="Файл">
-                <MenuItem Command="{Binding Load_Files}" Header="Открыть папку" />
-                <Separator />
-                <MenuItem Click="MenuItemExit_Click" Header="Выход" />
-            </MenuItem>
-            <MenuItem Click="MenuItemNewWin_Click" Header="Во весь экран" />
-            <Separator/>
+        <Menu
+            Name="TopMenu"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Style="{DynamicResource DarkStyle}">
             <MenuItem
-                Click="MenuItemSlideShowStart_Click" 
-                Header="Старт Слайдшоу"
-                Background="LightGreen"/>
-            <MenuItem 
+                Name="FileButton"
+                Header="Файл"
+                Style="{DynamicResource DarkStyle}">
+                <MenuItem
+                    Name="OpenFolderButton"
+                    Command="{Binding Load_Files}"
+                    Header="Открыть папку"
+                    Style="{DynamicResource DarkStyle}" />
+                <Separator />
+                <MenuItem
+                    Name="ExitButton"
+                    Click="MenuItemExit_Click"
+                    Header="Выход"
+                    Style="{DynamicResource DarkStyle}" />
+            </MenuItem>
+            <MenuItem Header="Темы">
+                <MenuItem
+                    Name="DarkStyleButton"
+                    Click="DarkStyleButton_Click"
+                    Header="Темная"
+                    Style="{DynamicResource DarkStyle}" />
+                <MenuItem
+                    Name="LightStyleButton"
+                    Click="MenuItemLightStyle_Click"
+                    Header="Светлая"
+                    Style="{DynamicResource DarkStyle}" />
+            </MenuItem>
+            <!--<MenuItem Click="MenuItemNewWin_Click" Header="Во весь экран" />-->
+            <Separator />
+            <MenuItem
+                Background="LightGreen"
+                Click="MenuItemSlideShowStart_Click"
+                Header="Старт Слайдшоу" />
+            <MenuItem
+                Background="LightCoral"
                 Click="MenuItemSlideShowStop_Click"
-                Header="Стоп Слайдшоу" 
-                Background="LightCoral"/>
+                Header="Стоп Слайдшоу" />
         </Menu>
         <Button
             Name="ButtonLeft"
@@ -53,9 +80,7 @@
             Click="ButtonLeft_Click"
             Content="">
             <Button.Background>
-                <ImageBrush
-                    ImageSource="Resources/navigate-left.png" 
-                    Stretch="UniformToFill" />
+                <ImageBrush ImageSource="Resources/navigate-left.png" Stretch="UniformToFill" />
             </Button.Background>
         </Button>
         <Button
@@ -66,9 +91,7 @@
             Click="ButtonRight_Click"
             Content="">
             <Button.Background>
-                <ImageBrush
-                    ImageSource="Resources/navigate-right.png"
-                    Stretch="UniformToFill" />
+                <ImageBrush ImageSource="Resources/navigate-right.png" Stretch="UniformToFill" />
             </Button.Background>
         </Button>
         <ListBox
@@ -78,7 +101,8 @@
             Grid.ColumnSpan="2"
             BorderBrush="{x:Null}"
             ItemsSource="{Binding Files}"
-            SelectedItem="{Binding SelectedPicture}">
+            SelectedItem="{Binding SelectedPicture}"
+            Style="{DynamicResource DarkStyle}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
@@ -94,6 +118,7 @@
             </ItemsControl.ItemTemplate>
         </ListBox>
         <Image
+            Name="BigImage"
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="4"

@@ -66,6 +66,14 @@
     <Compile Include="Win.xaml.cs">
       <DependentUpon>Win.xaml</DependentUpon>
     </Compile>
+    <Page Include="DarkThem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LightThem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

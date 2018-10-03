@@ -52,21 +52,15 @@ namespace WpfApp_1
                 listBox.SelectedIndex = 0;
         }
 
-        private void MenuItemNewWin_Click(object sender, RoutedEventArgs e)
-        {
-            Win win = new Win();
-            win.Owner = this;
-            win.Show();
-        }
+        //private void MenuItemNewWin_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Win win = new Win(listBox.SelectedItem);
+        //    win.Owner = this;
+        //    win.Show();
+        //}
         #region slideshow
-        private void MenuItemSlideShowStart_Click(object sender, RoutedEventArgs e)
-        {
-            timer.Start();
-        }
-        private void MenuItemSlideShowStop_Click(object sender, RoutedEventArgs e)
-        {
-            timer.Stop();
-        }
+        private void MenuItemSlideShowStart_Click(object sender, RoutedEventArgs e) => timer.Start();
+        private void MenuItemSlideShowStop_Click(object sender, RoutedEventArgs e) => timer.Stop();
 
         void timer_Tick(object sender, EventArgs e)
         {
@@ -76,6 +70,33 @@ namespace WpfApp_1
                 listBox.SelectedIndex += 1;
             else
                 listBox.SelectedIndex = 0;
+        }
+        #endregion
+        #region Syle
+        private void MenuItemLightStyle_Click(object sender, RoutedEventArgs e)
+        {
+            ImageViwerWindow.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            FileButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            LightStyleButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            DarkStyleButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            listBox.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            TopMenu.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            BigImage.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            OpenFolderButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            ExitButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
+        }
+
+        private void DarkStyleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ImageViwerWindow.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            FileButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            LightStyleButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            DarkStyleButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            listBox.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            TopMenu.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            BigImage.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            OpenFolderButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            ExitButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
         }
         #endregion
     }

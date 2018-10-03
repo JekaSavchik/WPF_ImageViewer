@@ -11,13 +11,19 @@
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
     <Grid>
         <TextBlock
+            Name="txt"
             Width="100"
             Height="20"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Background="BlueViolet" />
+            Background="BlueViolet"
+            DataContext="{Binding SelectedPicture}"
+            Text="{Binding _Path, UpdateSourceTrigger=PropertyChanged}" />
         <Image
             Name="Img"
             DataContext="{Binding SelectedPicture}"

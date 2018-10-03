@@ -4,5 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:WpfApp_1"
     StartupUri="MainWindow.xaml">
-    <Application.Resources />
+    <Application.Resources>
+        <Style x:Key="DarkStyle">
+            <Setter Property="Control.Background" Value="DarkGray" />
+            <Setter Property="Control.BorderBrush" Value="DarkGray" />
+        </Style>
+        <Style x:Key="LightStyle">
+            <Setter Property="Control.Background" Value="#FFF3E6E6" />
+            <Setter Property="Control.BorderBrush" Value="#FFF3E6E6" />
+        </Style>
+
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="LightThem.Xaml" />
+                <ResourceDictionary Source="DarkThem.Xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+    </Application.Resources>
 </Application>

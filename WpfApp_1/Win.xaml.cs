@@ -19,10 +19,12 @@ namespace WpfApp_1
     /// </summary>
     public partial class Win : Window
     {
+        private Picture pic1;
         public string img { get; set; }
-        public Win()
+        public Win(object pic)
         {
             InitializeComponent();
+            //pic1 = pic;
         }
     }
 }
