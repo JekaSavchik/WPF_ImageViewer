@@ -75,28 +75,18 @@ namespace WpfApp_1
         #region Syle
         private void MenuItemLightStyle_Click(object sender, RoutedEventArgs e)
         {
-            ImageViwerWindow.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            FileButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            LightStyleButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            DarkStyleButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            listBox.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            TopMenu.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            BigImage.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            OpenFolderButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
-            ExitButton.Style = (Style)LightStyleButton.FindResource("LightStyle");
+            var uri = new Uri("LightThem.xaml", UriKind.Relative);
+            ResourceDictionary resourceDict = System.Windows.Application.LoadComponent(uri) as ResourceDictionary;
+            System.Windows.Application.Current.Resources.Clear();
+            System.Windows.Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
 
         private void DarkStyleButton_Click(object sender, RoutedEventArgs e)
         {
-            ImageViwerWindow.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            FileButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            LightStyleButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            DarkStyleButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            listBox.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            TopMenu.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            BigImage.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            OpenFolderButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
-            ExitButton.Style = (Style)LightStyleButton.FindResource("DarkStyle");
+            var uri = new Uri("DarkThem.xaml", UriKind.Relative);
+            ResourceDictionary resourceDict = System.Windows.Application.LoadComponent(uri) as ResourceDictionary;
+            System.Windows.Application.Current.Resources.Clear();
+            System.Windows.Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
         #endregion
     }

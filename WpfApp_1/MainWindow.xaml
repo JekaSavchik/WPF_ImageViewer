@@ -10,7 +10,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    Style="{DynamicResource DarkStyle}"
+    Style="{DynamicResource WindowStyle}"
     mc:Ignorable="d">
     <Window.DataContext>
         <local:ViewModel />
@@ -32,34 +32,34 @@
             Name="TopMenu"
             Grid.Column="0"
             Grid.ColumnSpan="4"
-            Style="{DynamicResource DarkStyle}">
+            Style="{DynamicResource MenuStyle}">
             <MenuItem
                 Name="FileButton"
                 Header="Файл"
-                Style="{DynamicResource DarkStyle}">
+                Style="{DynamicResource MenuItemStyle}">
                 <MenuItem
                     Name="OpenFolderButton"
                     Command="{Binding Load_Files}"
                     Header="Открыть папку"
-                    Style="{DynamicResource DarkStyle}" />
+                    Style="{DynamicResource MenuItemStyle}" />
                 <Separator />
                 <MenuItem
                     Name="ExitButton"
                     Click="MenuItemExit_Click"
                     Header="Выход"
-                    Style="{DynamicResource DarkStyle}" />
+                    Style="{DynamicResource MenuItemStyle}" />
             </MenuItem>
             <MenuItem Header="Темы">
                 <MenuItem
                     Name="DarkStyleButton"
                     Click="DarkStyleButton_Click"
                     Header="Темная"
-                    Style="{DynamicResource DarkStyle}" />
+                    Style="{DynamicResource MenuItemStyle}" />
                 <MenuItem
                     Name="LightStyleButton"
                     Click="MenuItemLightStyle_Click"
                     Header="Светлая"
-                    Style="{DynamicResource DarkStyle}" />
+                    Style="{DynamicResource MenuItemStyle}" />
             </MenuItem>
             <!--<MenuItem Click="MenuItemNewWin_Click" Header="Во весь экран" />-->
             <Separator />
@@ -102,7 +102,7 @@
             BorderBrush="{x:Null}"
             ItemsSource="{Binding Files}"
             SelectedItem="{Binding SelectedPicture}"
-            Style="{DynamicResource DarkStyle}">
+            Style="{DynamicResource ListBoxStyle}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
